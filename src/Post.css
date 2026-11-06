@@ -1,0 +1,25 @@
+.postContainer{
+    border: solid 2px green;
+    padding: 20px;
+    margin: 20px;
+    display: flex;
+    gap: 25px;
+    flex-direction: column;
+}
+
+.titleClass{
+    font-size: 20px;
+    color: black;
+}
+
+hr{
+    color: white;
+    font-size: 2px;
+    width: 100%;
+}
+
+
+.descriptionClass{
+    font-size: 15px;
+    color: black;
+}

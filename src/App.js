@@ -1,23 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.css";
+import FirstComponents from "./FirstComponents";
+import Post from "./Post";
+import SideBar from "./SideBar";
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+      <FirstComponents />
+
+      <div
+        style={{ display: "flex", gap: "20px", margin: "50px" }}
+      >
+        <div style={{width:'70%'}}>
+          <Post />
+          <Post />
+          <Post />
+          <Post />
+          <Post />
+          <Post />
+          <Post />
+        </div>
+        <div
+          style={{
+            width: "30%",
+            display: "flex",
+            flexDirection: "column",
+            gap: "20px",
+          }}
         >
-          Learn React
-        </a>
-      </header>
+          <SideBar />
+        </div>
+      </div>
     </div>
   );
 }
