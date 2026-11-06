@@ -3,8 +3,11 @@ import FirstComponents from "./FirstComponents";
 import Post from "./Post";
 import SideBar from "./SideBar";
 import PersonProps from "./PersonProps";
+const showSidebar= true;
+export default function App() {
 
-function App() {
+
+  
   return (
     <div className="App">
       <FirstComponents />
@@ -30,11 +33,22 @@ function App() {
             gap: "20px",
           }}
         >
-          <SideBar />
+          <AppSidebar />
         </div>
       </div>
     </div>
   );
 }
 
-export default App;
+
+function AppSidebar() {
+  if(showSidebar == true){
+    return <SideBar />;
+  }else{
+    return null;
+  }
+}
+
+
+
+

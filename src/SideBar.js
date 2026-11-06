@@ -26,7 +26,7 @@ export default function SideBar() {
       <Button numberHello={4} numberDescription={4} >
         I am a child of Button  4
         </Button>
-      <Button numberHello={5} numberDescription={5} />
+      <Button numberDescription={5} />
     </div>
   );
 }
