@@ -1,5 +1,5 @@
 export default function FirstComponents() {
-    let x = 10;
+    // let x = 10;
 
 const person ={
     name: "Saeed Karout",
@@ -7,7 +7,7 @@ const person ={
     city: "Syria"
 }
   return (
-    <div div style={StyleComponent}>
+    <div  style={StyleComponent}>
       <div>
         Mr. {person.name} 
       </div>
