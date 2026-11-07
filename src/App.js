@@ -3,6 +3,7 @@ import FirstComponents from "./FirstComponents";
 import Post from "./Post";
 import SideBar from "./SideBar";
 import PersonProps from "./PersonProps";
+import MyButtons from "./MyButtons";
 const showSidebar = true;
 export default function App() {
   const tasks = [
@@ -59,6 +60,8 @@ export default function App() {
     <div className="App">
       <FirstComponents />
 
+      {/* Base Dom Example  */}
+      <MyButtons />
       <div style={{ display: "flex", gap: "20px", margin: "50px" }}>
         <div style={{ width: "70%" }}>
           {/* <Post />
