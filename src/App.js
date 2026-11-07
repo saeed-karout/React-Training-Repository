@@ -4,6 +4,7 @@ import Post from "./Post";
 import SideBar from "./SideBar";
 import PersonProps from "./PersonProps";
 import MyButtons from "./MyButtons";
+import MyInput from "./MyInput";
 const showSidebar = true;
 export default function App() {
   const tasks = [
@@ -59,9 +60,10 @@ export default function App() {
   return (
     <div className="App">
       <FirstComponents />
+      <MyInput />
 
       {/* Base Dom Example  */}
-      <MyButtons />
+      {/* <MyButtons /> */}
       <div style={{ display: "flex", gap: "20px", margin: "50px" }}>
         <div style={{ width: "70%" }}>
           {/* <Post />
