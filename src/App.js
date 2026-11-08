@@ -28,8 +28,7 @@ export default function App() {
   function handleEdit(id){
     const newDevices = devices.map((device) =>{
       if(device.id === id){
-       let newDevices = {...device,name:device.name + " edited"};
-       return newDevices;
+       return{...device,name:device.name + " edited done"};
       }else{
         return device;
       }
