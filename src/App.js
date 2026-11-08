@@ -13,6 +13,7 @@ export default function App() {
   const deviceList= devices.map((device,index)=>{
     return <li key={index}>{device.name}
       <button onClick={()=>{handleDelete(device.id)}}>Delete</button>
+      <button onClick={()=>{handleEdit(device.id)}}>Edit</button>
     </li>
   })
 
@@ -21,6 +22,20 @@ export default function App() {
    
     
     setDevices(NewDevices);
+  }
+
+
+  function handleEdit(id){
+    const newDevices = devices.map((device) =>{
+      if(device.id === id){
+       let newDevices = {...device,name:device.name + " edited"};
+       return newDevices;
+      }else{
+        return device;
+      }
+    })
+
+    setDevices(newDevices);
   }
 
   function handleAddNewDevice(){
