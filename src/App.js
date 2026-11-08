@@ -1,16 +1,27 @@
-// A simple react app to add new devices to the list of devices.
-// Array methods are used to add new devices to the list of devices. The useState hook is used to manage the state of the devices and the new device to be added. The map method is used to render the list of devices.
-
-
+// A simple react app to manage a list of devices.
+// when delete button is clicked, the device should be removed from the list.
 import { useState } from "react";
 import "./App.css";
 export default function App() {
   const [addDevice,setAddDevice]= useState("");
-  const [devices,setDevices] = useState(['iphone','ipad','andorid','windows']);
+  const [devices,setDevices] = useState([
+     {id:1,name:'iphone'}
+    ,{id:2,name:'ipad'}
+    ,{id:3,name:'android'}
+    ,{id:4,name:'windows'}
+  ]);
   const deviceList= devices.map((device,index)=>{
-    return <li key={index}>{device}</li>
+    return <li key={index}>{device.name}
+      <button onClick={()=>{handleDelete(device.id)}}>Delete</button>
+    </li>
   })
 
+  function handleDelete(id){
+    const NewDevices =devices.filter((device)=>device.id!==id);
+   
+    
+    setDevices(NewDevices);
+  }
 
   function handleAddNewDevice(){
     // const newDevices = [...devices];
