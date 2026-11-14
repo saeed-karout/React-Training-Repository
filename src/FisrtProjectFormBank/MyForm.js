@@ -3,6 +3,9 @@ import "./MyForm.css";
 import PopupSubmit from "./PopupSubmit";
 import MyComponent from "./MyComponent";
 
+import { loanFormInputContext } from "../useContext/LoanFormInputContext";
+
+
 export default function MyForm({ titletest }) {
   const [formData, setFormData] = useState({
     name: "",
@@ -11,15 +14,16 @@ export default function MyForm({ titletest }) {
     isEmployee: false,
     salary: "",
   });
-
+  
   const [showPopup, setShowPopup] = useState(false);
-
+  
   const isComplete = Boolean(
     formData.name &&
     formData.phone &&
     formData.age &&
     (formData.isEmployee ? formData.salary : true),
   );
+
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -44,6 +48,7 @@ export default function MyForm({ titletest }) {
   }
 
   return (
+    // Fragment to wrap the form and popup <> </>
     <>
       <div
         className="form-container"
@@ -63,7 +68,9 @@ export default function MyForm({ titletest }) {
             placeholder="Enter your name"
             required
           /> */}
-          <MyComponent value={formData.name} handleChange={handleChangeName} labelname="Name" />
+          <loanFormInputContext.Provider value={{ handleChange:handleChangeName, labelname:'Name',value:formData.name }}>
+            <MyComponent />
+          </loanFormInputContext.Provider>
 
 
           {/* <label htmlFor="phone">Phone : </label>
@@ -77,7 +84,10 @@ export default function MyForm({ titletest }) {
             placeholder="Enter your phone number"
             required
           /> */}
-          <MyComponent value={formData.phone} handleChange={handleChangePhone} labelname="Phone" />
+
+          <loanFormInputContext.Provider value={{ handleChange:handleChangePhone, labelname:'Phone',value:formData.phone }}>
+             <MyComponent  />
+          </loanFormInputContext.Provider>
 
           {/* <label htmlFor="age">Age :</label>
           <input
@@ -88,8 +98,10 @@ export default function MyForm({ titletest }) {
             placeholder="Enter your age"
             required
           /> */}
-
-                    <MyComponent value={formData.age} handleChange={handleChangeAge} labelname="Age" />
+          <loanFormInputContext.Provider value={{ handleChange:handleChangeAge, labelname:'Age',value:formData.age }}>
+             <MyComponent  />
+          </loanFormInputContext.Provider>
+                   
 
 
           <h2>Are you an employee ?</h2>

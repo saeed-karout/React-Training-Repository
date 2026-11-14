@@ -1,17 +1,11 @@
-export default function MyComponent({ value , handleChange , labelname}) {
+import MyInput from "./MyInput";
+
+export default function MyComponent() {
     return (
         <>
-         <label htmlFor={labelname}>{labelname} : </label>
-          <input
-            type="tel"
-            id="phone"
-            value={value}
-            onChange={(e) =>
-                handleChange(e.target.value )
-            }
-            placeholder="Enter your phone number"
-            required
-          />
+            <h2>Header</h2>
+            <MyInput  />
+            <h2>Footer</h2>
         </>
     )
 }
