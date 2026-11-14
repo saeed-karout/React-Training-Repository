@@ -4,11 +4,13 @@ import PopupSubmit from "./PopupSubmit";
 import MyComponent from "./MyComponent";
 
 import { loanFormInputContext } from "../useContext/LoanFormInputContext";
-
+import { useContext } from "react";
+import { userData } from "../useContext/UserContext";
 
 export default function MyForm({ titletest }) {
+  const userContext = useContext(userData);
   const [formData, setFormData] = useState({
-    name: "",
+    name: userContext.userName,
     phone: "",
     age: "",
     isEmployee: false,
