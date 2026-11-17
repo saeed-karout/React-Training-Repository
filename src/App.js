@@ -1,92 +1,108 @@
+// React Router Tutorial
 import "./App.css";
-import MyForm from "./FisrtProjectFormBank/MyForm";
-import { userData } from "./useContext/UserContext";
+import { Routes, Route, Link } from "react-router-dom";
+import Contact from "./React router/Contact";
+import PostList from "./React router/PostsList";
+import NewPost from "./React router/NewPost";
+import DeletePost from "./React router/DeletePost";
+import PostDetales from "./React router/PostDetales";
+import { PostContext } from "./useContext/PostContext";
+import Page404 from "./React router/Page404";
+import LayoutPost from "./React router/LayoutPost";
+
 export default function App() {
-  let titletest = "test title";
+  // 1. Define the posts array here
+  const posts = [
+    { id: 1, title: "Post title 1", content: "This is the content of post 1" },
+    { id: 2, title: "Post title 2", content: "This is the content of post 2" },
+    { id: 3, title: "Post title 3", content: "This is the content of post 3" },
+    { id: 4, title: "Post title 4", content: "This is the content of post 4" },
+    { id: 5, title: "Post title 5", content: "This is the content of post 5" },
+  ];
+
   return (
-    <userData.Provider value={{userName:'Saeed karout',userEmail:'saed.karot1@gmail.com',userPhone:'0957608833'}}>
-      <div className="App">
-        <MyForm titletest={titletest} />
+    <>
+      <div
+        style={{
+          backgroundColor: "blue",
+          display: "flex",
+          justifyContent: "space-around",
+          alignItems: "center",
+        }}
+      >
+        <h1>React Router Tutorial</h1>
+
+        <div>
+          <Link
+            to="/"
+            style={{
+              margin: "10px",
+              padding: "10px",
+              backgroundColor: "blue",
+              color: "white",
+            }}
+          >
+            Home
+          </Link>
+
+          <Link
+            to="/posts"
+            style={{
+              margin: "10px",
+              padding: "10px",
+              backgroundColor: "blue",
+              color: "white",
+            }}
+          >
+            Posts
+          </Link>
+
+          <Link
+            to="/contact"
+            style={{
+              margin: "10px",
+              padding: "10px",
+              backgroundColor: "blue",
+              color: "white",
+            }}
+          >
+            Contact
+          </Link>
+
+          <Link
+            to="/about"
+            style={{
+              margin: "10px",
+              padding: "10px",
+              backgroundColor: "blue",
+              color: "white",
+            }}
+          >
+            About
+          </Link>
+        </div>
       </div>
-    </userData.Provider>
+
+     
+      <PostContext.Provider value={posts}>
+        <Routes>
+          <Route path="/" element={<h1>Home Page</h1>} />
+          <Route path="/about" element={<h1>About Page</h1>} />
+          <Route path="/contact" element={<Contact />} />
+            {/* Nested Routes */}
+        <Route path='/posts' element={<LayoutPost />}>
+          <Route index element={<PostList />} />
+          <Route path=":postId" element={<PostDetales />} />
+          <Route path='new' element={<NewPost />} />
+          <Route path='delete' element={<DeletePost />} />
+        </Route>
+
+          <Route path='*' element={<Page404 />} />
+
+        </Routes>
+      </PostContext.Provider>
+  
+      <h1 style={{ backgroundColor: "blue" }}>React Router Tutorial Footer </h1>
+    </>
   );
 }
-// Exam 2 
-// https://react.dev/learn/passing-data-deeply-with-context#challenges
-
-// Answer to the challenge: 
-//Context file 
-// import {createContext} from 'react';
-// export let ChangeSize = createContext(100); 
-// export let PlaceData = createContext();
-
-// import { useState } from 'react';
-// import { places } from './data.js';
-// import { getImageUrl } from './utils.js';
-// import {useContext} from 'react'
-// import {ChangeSize , PlaceData} from './Context.js';
-
-
-// export default function App() {
-//   const [isLarge, setIsLarge] = useState(false);
-//   const imageSize = isLarge ? 150 : 100;
-//   return (
-//     <ChangeSize.Provider value={imageSize}>
-//       <label>
-//         <input
-//           type="checkbox"
-//           checked={isLarge}
-//           onChange={e => {
-//             setIsLarge(e.target.checked);
-//           }}
-//         />
-//         Use large images
-//       </label>
-//       <hr />
-//       <List imageSize={imageSize} />
-//     </ChangeSize.Provider>
-//   )
-// }
-
-// function List() {
-  
-//     const listItems = places.map(place =>
-//   <PlaceData.Provider value={place}>
-//       <li key={place.id}>
-//         <Place/>
-//       </li>
-//   </PlaceData.Provider>
-//     );
-//     return <ul>{listItems}</ul>;
-// }
-
-// function Place() {
-//   const Place = useContext(PlaceData);
-  
-//   return (
-//     <>
-//       <PlaceImage
-//       />
-//       <p>
-//         <b>{Place.name}</b>
-//         {': ' + Place.description}
-//       </p>
-//     </>
-//   );
-// }
-
-// function PlaceImage() {
-//   const imageSize = useContext(ChangeSize);
-//   const Place = useContext(PlaceData);
-  
-//   return (
-//     <img
-//       src={getImageUrl(Place)}
-//       alt={Place.name}
-//       width={imageSize}
-//       height={imageSize}
-//     />
-//   );
-// }
-
-
